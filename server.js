@@ -6,8 +6,14 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 
   socket.on('loopValue', (msg) => {
-    console.log('loopValue = ', msg)
-    io.sockets.emit('loopValueClient', msg)
+    // console.log('loopValue = ', msg)
+    socket.broadcast.emit('loopValueClient', msg)
+  });
+
+
+  socket.on('animationStatus:host', (msg) => {
+    console.log('animationStatus:host = ', msg)
+    socket.broadcast.emit('animationStatus:client', msg)
   });
 });
 
