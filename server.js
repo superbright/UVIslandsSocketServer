@@ -1,5 +1,9 @@
 var app = require('express')();
+var cors = require('cors')
+app.use(cors())
+
 var http = require('http').createServer(app);
+
 var io = require('socket.io')(http);
 const PORT = 3000;
 io.on('connection', (socket) => {
